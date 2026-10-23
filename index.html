@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daniella Louzado | Estatística</title>
+<meta name="description" content="Portfólio de Daniella Louzado da Silva, estudante de Estatística na UFJF.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --creme: #F6EFE3;
+    --creme-escuro: #EADFCB;
+    --framboesa: #A8245F;   /* texto rosa sobre creme: contraste AA */
+    --rosa: #F4B8D8;        /* só fundos e destaques */
+    --marinho: #231F52;
+    --texto: #231F52;
+    --fonte-titulo: "Caprasimo", Georgia, "Times New Roman", serif;
+    --fonte-texto: "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--creme);
+    color: var(--texto);
+    font-family: var(--fonte-texto);
+    font-size: 1.125rem; /* 18px */
+    line-height: 1.65;
+  }
+  h1, h2, h3 { font-family: var(--fonte-titulo); font-weight: 400; line-height: 1.1; margin: 0 0 .5em; }
+  h2 { font-size: clamp(2rem, 5vw, 3rem); color: var(--framboesa); }
+  h3 { font-size: 1.5rem; }
+  p { margin: 0 0 1em; max-width: 62ch; }
+  a { color: var(--framboesa); text-underline-offset: 3px; }
+  a:focus-visible, button:focus-visible, .skip:focus-visible {
+    outline: 3px solid var(--marinho);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  .skip { position: absolute; left: -999px; top: 0; background: var(--marinho); color: var(--creme); padding: .75rem 1rem; z-index: 10; }
+  .skip:focus { left: 1rem; top: 1rem; }
+
+  /* faixa xadrez */
+  .xadrez {
+    height: 28px;
+    background:
+      conic-gradient(var(--marinho) 25%, var(--rosa) 0 50%, var(--marinho) 0 75%, var(--rosa) 0) 0 0 / 56px 56px;
+  }
+
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
+  section { padding: 72px 0; }
+
+  /* marcador de conteúdo simulado */
+  .sim {
+    display: inline-block;
+    font-size: .8rem;
+    font-weight: 700;
+    letter-spacing: .04em;
+    background: var(--marinho);
+    color: var(--creme);
+    padding: .15rem .6rem;
+    border-radius: 4px;
+    vertical-align: middle;
+  }
+  .ph {
+    border: 2px dashed var(--framboesa);
+    padding: 1rem 1.25rem;
+    border-radius: 6px;
+    color: var(--framboesa);
+    font-weight: 700;
+    max-width: 62ch;
+  }
+
+  /* nav */
+  header.topo { padding: 18px 0; }
+  header.topo .wrap { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  .marca { font-family: var(--fonte-titulo); font-size: 1.3rem; color: var(--framboesa); text-decoration: none; }
+  nav ul { list-style: none; display: flex; gap: 22px; margin: 0; padding: 0; flex-wrap: wrap; }
+  nav a { color: var(--marinho); font-weight: 500; }
+
+  /* hero */
+  .hero { background: var(--rosa); padding: 64px 0 80px; }
+  .hero .wrap { display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; align-items: center; }
+  .oi { font-size: 1.4rem; margin: 0; }
+  .hero h1 { font-size: clamp(2.6rem, 8vw, 5rem); color: var(--marinho); margin-bottom: .25em; }
+  .posicao { font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 700; line-height: 1.3; max-width: 24ch; margin-bottom: .75em; }
+  .polaroid {
+    background: var(--creme);
+    padding: 14px 14px 52px;
+    border-radius: 6px;
+    transform: rotate(3deg);
+    box-shadow: 0 2px 0 var(--marinho);
+    border: 2px solid var(--marinho);
+    max-width: 340px;
+    justify-self: center;
+    position: relative;
+  }
+  .polaroid .foto {
+    aspect-ratio: 4 / 5;
+    background: var(--creme-escuro);
+    display: grid;
+    place-items: center;
+    text-align: center;
+    padding: 1rem;
+    color: var(--framboesa);
+    font-weight: 700;
+    overflow: hidden;
+  }
+  .polaroid img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .polaroid figcaption { position: absolute; bottom: 14px; left: 0; right: 0; text-align: center; font-family: var(--fonte-titulo); color: var(--marinho); }
+
+  /* números e bloco marinho */
+  .bloco-marinho { background: var(--marinho); color: var(--creme); }
+  .bloco-marinho h2 { color: var(--rosa); }
+  .bloco-marinho a { color: var(--rosa); }
+  .numeros { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 32px; margin-top: 32px; }
+  .numero strong { display: block; font-family: var(--fonte-titulo); font-size: 4rem; font-weight: 400; color: var(--rosa); line-height: 1; }
+  .numero p { margin-top: .5em; }
+
+  /* como trabalho */
+  .comportamentos { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; margin-top: 28px; }
+  .comp { border-top: 4px solid var(--framboesa); padding-top: 14px; }
+
+  /* case */
+  .case-meta { font-weight: 700; color: var(--framboesa); text-transform: uppercase; letter-spacing: .06em; font-size: .95rem; margin-bottom: .5rem; }
+  .case h3 { font-size: clamp(1.8rem, 4vw, 2.6rem); max-width: 22ch; }
+  .campo { display: grid; grid-template-columns: 200px 1fr; gap: 12px 32px; padding: 22px 0; border-top: 2px solid var(--creme-escuro); }
+  .campo h4 { font-family: var(--fonte-titulo); font-weight: 400; font-size: 1.25rem; color: var(--framboesa); margin: 0; }
+  .campo p:last-child { margin-bottom: 0; }
+
+  figure.grafico { margin: 24px 0 0; background: var(--marinho); color: var(--creme); padding: 24px; border-radius: 6px; max-width: 640px; }
+  figure.grafico figcaption { margin-top: 12px; font-size: 1rem; }
+  figure.grafico svg { width: 100%; height: auto; display: block; }
+
+  /* formação */
+  .formacao ul { padding-left: 1.2em; margin: 0; max-width: 62ch; }
+  .formacao li { margin-bottom: .5em; }
+
+  /* contato */
+  footer { padding: 64px 0 40px; background: var(--rosa); }
+  footer h2 { color: var(--marinho); }
+  footer .ph { background: var(--creme); border-color: var(--marinho); color: var(--marinho); }
+  footer small { display: block; margin-top: 2.5rem; font-size: 1rem; }
+
+  /* celular: reorganiza, não só encolhe */
+  @media (max-width: 760px) {
+    section { padding: 52px 0; }
+    .hero .wrap { grid-template-columns: 1fr; gap: 36px; }
+    .hero .polaroid { order: -1; max-width: 260px; }
+    .campo { grid-template-columns: 1fr; gap: 6px; }
+    .numero strong { font-size: 3.2rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .polaroid { transform: none; }
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+<div class="xadrez" aria-hidden="true"></div>
+
+<header class="topo">
+  <div class="wrap">
+    <a class="marca" href="#inicio">Daniella Louzado</a>
+    <nav aria-label="Principal">
+      <ul>
+        <li><a href="#numeros">Números</a></li>
+        <li><a href="#como-eu-trabalho">Como eu trabalho</a></li>
+        <li><a href="#case">Case</a></li>
+        <li><a href="#formacao">Formação</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo">
+
+  <!-- HERO -->
+  <section class="hero" id="inicio" aria-labelledby="titulo-hero">
+    <div class="wrap">
+      <div>
+        <p class="oi">Oi, eu sou a</p>
+        <h1 id="titulo-hero">Daniella</h1>
+        <p class="posicao">Antes de calcular qualquer coisa, eu pergunto de onde veio o número. <span class="sim">SIMULADO</span></p>
+        <p>Estudo Estatística no 8º período da Universidade Federal de Juiz de Fora. Trabalho com R, Python e Excel, e meu terreno favorito é o que fica entre a pergunta vaga e a pergunta que o dado consegue responder. <span class="sim">SIMULADO</span></p>
+      </div>
+      <figure class="polaroid">
+        <div class="foto" id="area-foto">
+          <img src="foto.jpg" alt="Retrato de Daniella Louzado" onerror="this.remove()">
+          <span id="ph-foto">[ESCOLHA UMA FOTO]<br>salve como foto.jpg na mesma pasta</span>
+        </div>
+        <figcaption>Daniella, UFJF</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <div class="xadrez" aria-hidden="true"></div>
+
+  <!-- NÚMEROS -->
+  <section class="bloco-marinho" id="numeros" aria-labelledby="titulo-numeros">
+    <div class="wrap">
+      <h2 id="titulo-numeros">Números que eu consigo defender</h2>
+      <p>Cada número abaixo tem uma história atrás e um limite declarado. Os dois valem para um projeto simulado. <span class="sim">SIMULADO</span></p>
+      <div class="numeros">
+        <div class="numero">
+          <strong>90</strong>
+          <p>dias de dados de smartwatch, de uma única pessoa. Isso permite ver padrões, mas não permite generalizar para outras pessoas.</p>
+        </div>
+        <div class="numero">
+          <strong>até 25%</strong>
+          <p>de queda no ritmo de corrida depois de noites com menos de 6 horas de sono. É uma associação observada nesses 90 dias, não prova de causa.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMO EU TRABALHO -->
+  <section id="como-eu-trabalho" aria-labelledby="titulo-trabalho">
+    <div class="wrap">
+      <h2 id="titulo-trabalho">Como eu trabalho</h2>
+      <p>Aqui entram 3 ou 4 comportamentos reais, cada um com uma cena concreta por trás. Sem histórias, não entra nada.</p>
+      <div class="comportamentos">
+        <div class="comp ph">[ADICIONE UM COMPORTAMENTO E A HISTÓRIA QUE O SUSTENTA]</div>
+        <div class="comp ph">[ADICIONE UM COMPORTAMENTO E A HISTÓRIA QUE O SUSTENTA]</div>
+        <div class="comp ph">[ADICIONE UM COMPORTAMENTO E A HISTÓRIA QUE O SUSTENTA]</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE -->
+  <section class="case" id="case" aria-labelledby="titulo-case" style="background: var(--creme-escuro);">
+    <div class="wrap">
+      <p class="case-meta">Case 1 <span class="sim">SIMULADO</span></p>
+      <h2 id="titulo-case" style="font-size: clamp(1.8rem,4vw,2.6rem);">Dormir menos de 6 horas parecia custar o ritmo da corrida do dia seguinte</h2>
+
+      <div class="campo">
+        <h4>Contexto</h4>
+        <div>
+          <p>Análise por conta própria, sem professor, prazo ou grupo. Usei 90 dias de dados do meu smartwatch (horas e qualidade de sono, ritmo médio nos treinos de corrida) para ver se a noite anterior mudava o treino.</p>
+        </div>
+      </div>
+
+      <div class="campo">
+        <h4>Problema</h4>
+        <div>
+          <p>Dados ruidosos e dias sem registro de sono. A pergunta inicial era vaga ("dormir bem ajuda?"), e precisei transformá-la em algo respondível: o ritmo médio muda depois de noites curtas?</p>
+          <p class="ph">[ADICIONE A EVIDÊNCIA: o que você esperava encontrar antes de abrir a planilha, e por quê]</p>
+        </div>
+      </div>
+
+      <div class="campo">
+        <h4>Decisão difícil</h4>
+        <div>
+          <p>Descartei os dias com dados incompletos em vez de imputar o sono que faltava. Perdi tamanho de amostra, mas não inventei noites que o relógio nunca mediu.</p>
+          <p class="ph">[ADICIONE: quantos dias foram descartados de 90, e por que imputar parecia pior]</p>
+        </div>
+      </div>
+
+      <div class="campo">
+        <h4>Resultado</h4>
+        <div>
+          <p>Nos dias que sobraram, noites com menos de 6 horas apareceram junto com queda de até 25% no ritmo médio do treino seguinte. Pesou mais do que a variação na alimentação que eu registrei.</p>
+          <figure class="grafico">
+            <svg viewBox="0 0 520 240" role="img" aria-labelledby="graf-t graf-d">
+              <title id="graf-t">Ritmo médio do treino cai até 25% após noites com menos de 6 horas de sono</title>
+              <desc id="graf-d">Duas barras: com 6 horas ou mais de sono, o ritmo é 100% da referência; com menos de 6 horas, cai até 25%, para cerca de 75%. Valores simulados.</desc>
+              <line x1="40" y1="200" x2="500" y2="200" stroke="#F6EFE3" stroke-width="2"/>
+              <rect x="90" y="40" width="130" height="160" fill="#F4B8D8"/>
+              <rect x="300" y="80" width="130" height="120" fill="none" stroke="#F4B8D8" stroke-width="4" stroke-dasharray="8 6"/>
+              <text x="155" y="30" text-anchor="middle" fill="#F6EFE3" font-size="18" font-weight="700">100%</text>
+              <text x="365" y="70" text-anchor="middle" fill="#F6EFE3" font-size="18" font-weight="700">até 25% menos</text>
+              <text x="155" y="226" text-anchor="middle" fill="#F6EFE3" font-size="16">6 h ou mais</text>
+              <text x="365" y="226" text-anchor="middle" fill="#F6EFE3" font-size="16">menos de 6 h</text>
+            </svg>
+            <figcaption>Ritmo médio do treino em relação à referência. Barra cheia: 6 h ou mais. Barra tracejada: menos de 6 h. Dados simulados.</figcaption>
+          </figure>
+          <p style="margin-top:1.25rem;"><strong>O que isso não prova.</strong> São 90 dias de uma pessoa só, então a conclusão não vale para outras pessoas. Faltou controlar estresse, clima e carga de treino do dia anterior, e qualquer um deles pode explicar parte da queda. Também não dá para separar causa de consequência: treinar pior pode piorar o sono da noite seguinte.</p>
+        </div>
+      </div>
+
+      <div class="campo">
+        <h4>O que eu faria diferente</h4>
+        <div>
+          <p>Automatizaria a coleta com um script desde o primeiro dia, para não depender de registro manual, e incluiria uma variável de estresse diário para controlar fatores de confusão.</p>
+        </div>
+      </div>
+
+      <p class="ph" style="margin-top:24px;">[ADICIONE O PRÓXIMO CASE AQUI]</p>
+    </div>
+  </section>
+
+  <!-- FORMAÇÃO -->
+  <section class="formacao" id="formacao" aria-labelledby="titulo-formacao">
+    <div class="wrap">
+      <h2 id="titulo-formacao">Formação</h2>
+      <h3>Estatística, Universidade Federal de Juiz de Fora</h3>
+      <p>8º período. Disciplinas que mais pesam no que eu faço:</p>
+      <ul>
+        <li>Inferência</li>
+        <li>Cálculo de Probabilidades</li>
+        <li>Processos Estocásticos</li>
+        <li>Estatística Computacional</li>
+      </ul>
+      <p style="margin-top:1.5rem;"><strong>Ferramentas que uso de verdade:</strong> R, Python e Excel.</p>
+      <p><strong>Extensão:</strong> Colônia de Férias Científica da UFJF.</p>
+      <p class="ph">[ADICIONE 2 A 3 DESTAQUES POR ITEM: o que você fez, não só onde esteve]</p>
+    </div>
+  </section>
+
+  <!-- FORA DA FACULDADE -->
+  <section id="fora" aria-labelledby="titulo-fora" style="background: var(--creme-escuro);">
+    <div class="wrap">
+      <h2 id="titulo-fora">Fora da faculdade</h2>
+      <p>Aqui vão 3 a 5 detalhes que mostrem a pessoa por trás do currículo.</p>
+      <p class="ph">[ADICIONE: hobbies, obsessões pequenas, o que você está aprendendo agora]</p>
+    </div>
+  </section>
+
+</main>
+
+<footer id="contato">
+  <div class="wrap">
+    <h2>Quer conversar?</h2>
+    <p>Escreve pra mim. Eu respondo.</p>
+    <p class="ph">[ADICIONE SEUS CANAIS: e-mail, GitHub, outro que você queira divulgar]</p>
+    <small>Este portfólio é uma simulação para aprender a construir um com auxílio de IA. Itens marcados como SIMULADO não são fatos.</small>
+  </div>
+</footer>
+
+<script>
+  // Mostra o placeholder da foto só se foto.jpg não existir
+  (function () {
+    var img = document.querySelector('#area-foto img');
+    var ph = document.getElementById('ph-foto');
+    if (!img || !ph) return;
+    function esconder() { ph.style.display = 'none'; }
+    if (img.complete && img.naturalWidth > 0) esconder();
+    img.addEventListener('load', esconder);
+  })();
+</script>
+</body>
+</html>
